@@ -1,0 +1,53 @@
+<article class="product-card">
+  <div class="product-media">
+    <img src="<%= product.image %>" alt="<%= product.name %>">
+  </div>
+
+  <div class="product-body">
+    <div class="product-topline">
+      <span class="tag"><%= product.category %></span>
+      <% if (Number(product.is_featured) === 1) { %>
+        <span class="tag tag-highlight">Destaque</span>
+      <% } %>
+    </div>
+
+    <h3><%= product.name %></h3>
+    <p><%= product.description %></p>
+
+    <div class="product-price-row">
+      <strong><%= formatCurrency(product.price) %></strong>
+      <span><%= Number(product.is_available) === 1 ? 'Disponível' : 'Indisponível' %></span>
+    </div>
+
+    <form class="product-form" action="/loja/pedido" method="post">
+      <input type="hidden" name="productId" value="<%= product.id %>">
+      <div class="field-row">
+        <label>
+          <span>Nome</span>
+          <input type="text" name="customerName" placeholder="Nome do personagem" required>
+        </label>
+        <label>
+          <span>Passaporte</span>
+          <input type="text" name="passport" placeholder="ID" required inputmode="numeric">
+        </label>
+      </div>
+      <div class="field-row">
+        <label>
+          <span>Discord</span>
+          <input type="text" name="discordTag" placeholder="usuario#0001">
+        </label>
+        <label>
+          <span>ID do Discord</span>
+          <input type="text" name="discordId" placeholder="1234567890">
+        </label>
+      </div>
+      <label>
+        <span>Observações</span>
+        <textarea name="notes" rows="3" placeholder="Detalhes adicionais para a staff"></textarea>
+      </label>
+      <button class="button" type="submit" <%= !databaseReady || Number(product.is_available) !== 1 ? 'disabled' : '' %>>
+        <%= databaseReady ? 'Gerar Pedido' : 'Banco indisponível' %>
+      </button>
+    </form>
+  </div>
+</article>

@@ -1,0 +1,40 @@
+<%- include('partials/head', { pageTitle, bodyClass: 'site-body' }) %>
+<%- include('partials/site-header') %>
+
+<section class="hero hero-inner hero-store">
+  <div class="shell hero-shell">
+    <div class="hero-copy compact">
+      <span class="eyebrow">Loja oficial</span>
+      <h1><%= categoryTitle %></h1>
+      <p>Pedidos enviados para a staff e registrados no banco da Zap City.</p>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/flash', { flash }) %>
+
+<section class="section">
+  <div class="shell category-tabs">
+    <a href="/loja">Todos</a>
+    <a href="/loja/vips" class="<%= currentPath === '/loja/vips' ? 'is-active' : '' %>">VIPs</a>
+    <a href="/loja/veiculos" class="<%= currentPath === '/loja/veiculos' ? 'is-active' : '' %>">Veículos</a>
+    <a href="/loja/outros" class="<%= currentPath === '/loja/outros' ? 'is-active' : '' %>">Outros</a>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="shell product-grid">
+    <% if (products.length) { %>
+      <% products.forEach((product) => { %>
+        <%- include('partials/product-card', { product }) %>
+      <% }) %>
+    <% } else { %>
+      <article class="empty-state">
+        <h3>Nenhum produto encontrado</h3>
+        <p>Conecte o banco e ajuste o catálogo para popular esta categoria.</p>
+      </article>
+    <% } %>
+  </div>
+</section>
+
+<%- include('partials/site-footer') %>

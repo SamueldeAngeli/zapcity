@@ -1,0 +1,8 @@
+<% if (flash) { %>
+  <section class="shell">
+    <div class="flash flash-<%= flash.type || 'info' %>">
+      <strong><%= flash.title %></strong>
+      <p><%= flash.message %></p>
+    </div>
+  </section>
+<% } %>

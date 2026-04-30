@@ -1,0 +1,26 @@
+<header class="site-header">
+  <div class="shell header-shell">
+    <a class="brand" href="/">
+      <span class="brand-mark">ZC</span>
+      <span class="brand-copy">
+        <strong><%= app.city.name %></strong>
+        <small>Cidade RP oficial</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" type="button" data-nav-toggle aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="site-nav" data-nav-menu>
+      <a href="/" class="<%= currentPath === '/' ? 'is-active' : '' %>">Início</a>
+      <a href="/allowlist" class="<%= currentPath.startsWith('/allowlist') ? 'is-active' : '' %>">Allowlist</a>
+      <a href="/loja" class="<%= currentPath.startsWith('/loja') ? 'is-active' : '' %>">Loja</a>
+      <a href="/regras" class="<%= currentPath === '/regras' ? 'is-active' : '' %>">Regras</a>
+      <a href="/status" class="<%= currentPath === '/status' ? 'is-active' : '' %>">Status</a>
+      <a href="/conectar" class="button button-small">Conectar</a>
+    </nav>
+  </div>
+</header>

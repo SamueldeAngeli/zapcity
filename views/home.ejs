@@ -1,0 +1,100 @@
+<%- include('partials/head', { pageTitle, bodyClass: 'site-body' }) %>
+<%- include('partials/site-header') %>
+
+<section class="hero hero-home">
+  <div class="shell hero-shell">
+    <div class="hero-copy">
+      <span class="eyebrow">Página oficial</span>
+      <h1>Zap City RP</h1>
+      <p>Discord, allowlist, loja e operação da cidade centralizados em uma estrutura pronta para crescer com a sua base vRP.</p>
+      <div class="hero-actions">
+        <a class="button" href="/conectar">Conectar na Cidade</a>
+        <a class="button button-secondary" href="/allowlist">Liberar Allowlist</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="metric">
+          <strong><%= statusData.playerCount %></strong>
+          <span>players online</span>
+        </div>
+        <div class="metric">
+          <strong><%= statusData.maxClients || 'N/D' %></strong>
+          <span>slots</span>
+        </div>
+        <div class="metric">
+          <strong><%= statusData.online ? 'ONLINE' : 'OFFLINE' %></strong>
+          <span>status do servidor</span>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-panel">
+      <span class="panel-status <%= statusData.online ? 'online' : 'offline' %>">
+        <%= statusData.online ? 'Servidor online' : 'Servidor offline' %>
+      </span>
+      <h2>Entrar na cidade</h2>
+      <p>Allowlist integrada com a base, painel web para vendas e logs preparados para staff e denúncias.</p>
+      <ul class="bullet-list">
+        <li>Allowlist ligada ao MySQL da base</li>
+        <li>Loja com pedidos enviados ao Discord</li>
+        <li>Área staff para histórico, kills e pedidos</li>
+      </ul>
+      <a class="button button-block" href="<%= app.city.discordInviteUrl %>" target="_blank" rel="noreferrer">Entrar no Discord</a>
+    </aside>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell info-grid">
+    <article class="feature-card">
+      <h3>Liberação mais direta</h3>
+      <p>A allowlist consulta a base vRP antes de liberar, evitando duplicidade e preservando o personagem existente.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Staff mais rápida</h3>
+      <p>Consulta por passaporte, últimos kills, histórico recente e pedidos da loja em um fluxo mais enxuto.</p>
+    </article>
+    <article class="feature-card">
+      <h3>Operação preparada</h3>
+      <p>Discord bot, API de logs e web pública com estrutura modular para crescer sem virar bagunça.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="shell section-heading">
+    <div>
+      <span class="eyebrow">Loja oficial</span>
+      <h2>Destaques da cidade</h2>
+    </div>
+    <a class="button button-ghost" href="/loja">Ver loja completa</a>
+  </div>
+
+  <div class="shell product-grid">
+    <% if (featuredProducts.length) { %>
+      <% featuredProducts.forEach((product) => { %>
+        <%- include('partials/product-card', { product }) %>
+      <% }) %>
+    <% } else { %>
+      <article class="empty-state">
+        <h3>Loja pronta para catálogo</h3>
+        <p>Assim que o MySQL estiver conectado, os produtos em destaque aparecem aqui automaticamente.</p>
+      </article>
+    <% } %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell split-band">
+    <div>
+      <span class="eyebrow">Status rápido</span>
+      <h2>Servidor <%= statusData.online ? 'respondendo' : 'aguardando resposta' %></h2>
+      <p>Endpoint monitorado: <code><%= statusData.endpoint %></code></p>
+    </div>
+    <div class="cta-stack">
+      <a class="button" href="/status">Abrir monitoramento</a>
+      <a class="button button-secondary" href="/regras">Ver regras da cidade</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/site-footer') %>

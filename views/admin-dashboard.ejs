@@ -1,0 +1,32 @@
+<%- include('partials/head', { pageTitle, bodyClass: 'admin-body' }) %>
+<%- include('partials/admin-nav') %>
+<%- include('partials/flash', { flash }) %>
+
+<main class="admin-main">
+  <section class="section">
+    <div class="shell section-heading">
+      <div>
+        <span class="eyebrow">Resumo operacional</span>
+        <h1>Painel da staff</h1>
+      </div>
+    </div>
+
+    <div class="shell info-grid">
+      <article class="feature-card">
+        <h3>Pedidos</h3>
+        <p><strong><%= summary.orders %></strong></p>
+      </article>
+      <article class="feature-card">
+        <h3>Allowlists pendentes</h3>
+        <p><strong><%= summary.pendingAllowlist %></strong></p>
+      </article>
+      <article class="feature-card">
+        <h3>Logs nas últimas 24h</h3>
+        <p><strong><%= summary.logs24h %></strong></p>
+      </article>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

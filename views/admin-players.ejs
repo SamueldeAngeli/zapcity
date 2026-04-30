@@ -1,0 +1,69 @@
+<%- include('partials/head', { pageTitle, bodyClass: 'admin-body' }) %>
+<%- include('partials/admin-nav') %>
+<%- include('partials/flash', { flash }) %>
+
+<main class="admin-main">
+  <section class="section">
+    <div class="shell">
+      <form class="inline-search" method="get" action="/admin/players">
+        <input type="text" name="passport" value="<%= passport %>" placeholder="Passaporte">
+        <button class="button" type="submit">Consultar</button>
+      </form>
+    </div>
+  </section>
+
+  <% if (snapshot && snapshot.player) { %>
+    <section class="section">
+      <div class="shell info-grid">
+        <article class="feature-card">
+          <h3>Nome</h3>
+          <p><strong><%= snapshot.player.first_name || 'Sem nome' %> <%= snapshot.player.last_name || '' %></strong></p>
+        </article>
+        <article class="feature-card">
+          <h3>Allowlist</h3>
+          <p><strong><%= Number(snapshot.player.whitelisted) === 1 ? 'Liberado' : 'Pendente' %></strong></p>
+        </article>
+        <article class="feature-card">
+          <h3>Discord</h3>
+          <p><strong><%= snapshot.discord?.discord_tag || snapshot.discord?.discord_id || 'N/D' %></strong></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-dark">
+      <div class="shell table-shell">
+        <h2>Histórico recente</h2>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Quando</th>
+              <th>Ação</th>
+              <th>Mensagem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% snapshot.history.forEach((item) => { %>
+              <tr>
+                <td><%= formatDateTime(item.created_at) %></td>
+                <td><%= item.action %></td>
+                <td><%= item.message %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  <% } else if (passport) { %>
+    <section class="section">
+      <div class="shell">
+        <article class="empty-state">
+          <h3>Player não encontrado</h3>
+          <p>Não encontrei esse passaporte na base vRP.</p>
+        </article>
+      </div>
+    </section>
+  <% } %>
+</main>
+
+</body>
+</html>

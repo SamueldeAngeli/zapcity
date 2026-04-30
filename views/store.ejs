@@ -1,0 +1,88 @@
+<%- include('partials/head', { pageTitle, bodyClass: 'site-body' }) %>
+<%- include('partials/site-header') %>
+
+<section class="hero hero-inner hero-store">
+  <div class="shell hero-shell">
+    <div class="hero-copy compact">
+      <span class="eyebrow">Loja oficial</span>
+      <h1>VIPs, veículos e pacotes</h1>
+      <p>Pedidos organizados no banco e enviados para o Discord da staff, com estrutura pronta para pagamento futuro e entrega automática.</p>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/flash', { flash }) %>
+
+<section class="section">
+  <div class="shell category-tabs">
+    <a href="/loja" class="<%= currentPath === '/loja' ? 'is-active' : '' %>">Todos</a>
+    <a href="/loja/vips" class="<%= currentPath === '/loja/vips' ? 'is-active' : '' %>">VIPs</a>
+    <a href="/loja/veiculos" class="<%= currentPath === '/loja/veiculos' ? 'is-active' : '' %>">Veículos</a>
+    <a href="/loja/outros" class="<%= currentPath === '/loja/outros' ? 'is-active' : '' %>">Outros</a>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="shell section-heading">
+    <div>
+      <span class="eyebrow">Destaques</span>
+      <h2>Mais procurados</h2>
+    </div>
+  </div>
+  <div class="shell product-grid">
+    <% if (featuredProducts.length) { %>
+      <% featuredProducts.forEach((product) => { %>
+        <%- include('partials/product-card', { product }) %>
+      <% }) %>
+    <% } else { %>
+      <article class="empty-state">
+        <h3>Catálogo aguardando conexão</h3>
+        <p>O seed inicial já está preparado. Falta só apontar o MySQL da cidade para o painel começar a servir pedidos.</p>
+      </article>
+    <% } %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell section-heading">
+    <div>
+      <span class="eyebrow">VIP</span>
+      <h2>Planos premium</h2>
+    </div>
+  </div>
+  <div class="shell product-grid">
+    <% vipProducts.forEach((product) => { %>
+      <%- include('partials/product-card', { product }) %>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="shell section-heading">
+    <div>
+      <span class="eyebrow">Veículos</span>
+      <h2>Garagem premium</h2>
+    </div>
+  </div>
+  <div class="shell product-grid">
+    <% vehicleProducts.forEach((product) => { %>
+      <%- include('partials/product-card', { product }) %>
+    <% }) %>
+  </div>
+</section>
+
+<section class="section">
+  <div class="shell section-heading">
+    <div>
+      <span class="eyebrow">Outros produtos</span>
+      <h2>Casas, coins e pacotes</h2>
+    </div>
+  </div>
+  <div class="shell product-grid">
+    <% miscProducts.forEach((product) => { %>
+      <%- include('partials/product-card', { product }) %>
+    <% }) %>
+  </div>
+</section>
+
+<%- include('partials/site-footer') %>
