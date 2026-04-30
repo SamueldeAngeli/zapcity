@@ -1,0 +1,17 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/site/index.html" },
+    { "source": "/loja", "destination": "/site/index.html" },
+    { "source": "/loja/vips", "destination": "/site/index.html" },
+    { "source": "/loja/veiculos", "destination": "/site/index.html" },
+    { "source": "/loja/outros", "destination": "/site/index.html" },
+    { "source": "/vip", "destination": "/site/index.html" },
+    { "source": "/pacote-inicial", "destination": "/site/index.html" },
+    { "source": "/noticias", "destination": "/site/index.html" },
+    { "source": "/como-jogar", "destination": "/site/index.html" },
+    { "source": "/contato", "destination": "/site/index.html" },
+    { "source": "/allowlist", "destination": "/site/index.html" },
+    { "source": "/conectar", "destination": "/site/index.html" }
+  ]
+}

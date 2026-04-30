@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zap City RP</title>
+  <meta name="description" content="Site oficial da Zap City RP com loja, VIP, allowlist e conexão com a cidade.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/site/styles.css">
+  <script src="/site/config.js"></script>
+  <script defer src="/site/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="/" data-link>
+      <img class="logo-image" src="/site/assets/zapcity-logo.png" alt="Zap City RP">
+      <span class="logo-copy">
+        <strong>Zap City</strong>
+        <small>Roleplay</small>
+      </span>
+    </a>
+
+    <button class="menu-button" type="button" data-menu-toggle aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="main-nav" data-menu>
+      <a href="/" data-link>Home</a>
+      <a href="/pacote-inicial" data-link>Pacote Inicial</a>
+      <a href="/vip" data-link>VIP</a>
+      <a href="/loja" data-link>Loja</a>
+      <a href="/noticias" data-link>Notícias</a>
+      <a href="/como-jogar" data-link>Como Jogar</a>
+      <a href="/contato" data-link>Contato</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="coin-pill">
+        <span class="diamond"></span>
+        <strong>125</strong>
+      </div>
+      <button class="profile-button" type="button" data-route="/conectar">
+        <span class="profile-avatar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="app" class="app-shell">
+    <section class="loading-screen">
+      <span class="loader"></span>
+      <p>Carregando Zap City RP...</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <dialog class="order-dialog" id="orderDialog">
+    <form class="order-modal" id="orderForm">
+      <button class="modal-close" type="button" data-close-order aria-label="Fechar">×</button>
+      <div>
+        <span class="eyebrow">Pedido da loja</span>
+        <h2 id="orderProductTitle">Produto</h2>
+        <p id="orderProductDescription"></p>
+      </div>
+      <input type="hidden" name="productId" id="orderProductId">
+      <label>
+        <span>Nome do personagem</span>
+        <input name="customerName" type="text" required>
+      </label>
+      <div class="field-row">
+        <label>
+          <span>Passaporte / ID</span>
+          <input name="passport" type="text" inputmode="numeric" required>
+        </label>
+        <label>
+          <span>Discord</span>
+          <input name="discordTag" type="text" placeholder="usuario#0001">
+        </label>
+      </div>
+      <label>
+        <span>ID do Discord</span>
+        <input name="discordId" type="text" placeholder="Opcional">
+      </label>
+      <label>
+        <span>Observações</span>
+        <textarea name="notes" rows="4" placeholder="Exemplo: cor do veículo, entrega combinada, pacote desejado"></textarea>
+      </label>
+      <button class="primary-button" type="submit">Gerar pedido</button>
+    </form>
+  </dialog>
+</body>
+</html>
